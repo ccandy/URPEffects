@@ -9,6 +9,10 @@ SAMPLER(sampler_ShiftMap);
 TEXTURE2D(_NoiseTex);
 SAMPLER(sampler_NoiseTex);
 
+TEXTURE2D(_AlphaTex);
+SAMPLER(sampler_AlphaTex);
+
+
 float primaryShift;
 float secondaryShift;
 
@@ -54,7 +58,7 @@ float4 HairLighting(float3 T, float3 N, float3 lightVec, float3 viewVec, float2 
 	
 	float4 o;
 	o.rgb = (diffuse + spec1 + spec2) * ambOcc;
-	o.a = 1;
+	o.a = SAMPLE_TEXTURE2D(_AlphaTex, sampler_AlphaTex, uv);
 
 	return o;
 
