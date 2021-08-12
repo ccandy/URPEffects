@@ -3,6 +3,9 @@ Shader "Effect/BlurShader"
     Properties
     {
         _BlurSize("Blur Size", Range(0,0.1)) = 0
+        _Samples("Sample amount", Float) = 0
+        _Gauss("Gaussian Blur", float) = 0
+        _StandardDeviation("Standard Deviation (Gauss only)", Range(0, 0.1)) = 0.02
     }
 
     SubShader
