@@ -59,4 +59,4 @@ MonoBehaviour:
   BlurRenderSetting:
     RenderEvent: 300
     BlurMat: {fileID: 2100000, guid: a5be172603b28174dbd63ac138c9dfe5, type: 2}
-    BlurSize: 0
+    BlurSize: 0.05
