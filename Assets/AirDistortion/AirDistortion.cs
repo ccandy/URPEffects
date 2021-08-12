@@ -91,12 +91,6 @@ public class AirDistortion : ScriptableRendererFeature
             Setting.AirDistortionMat.SetFloat(DistortionStrongFactorId, this.Setting.DistortionStrongFactor);
             Setting.AirDistortionMat.SetTexture(NoiseTexId, this.Setting.NoiseTex);
         }
-        else
-        {
-            Debug.LogError("mat is null");
-        }
-        
-        
         
         m_ScriptablePass = new AirDistortionPass(Setting);
         m_ScriptablePass.renderPassEvent = RenderPassEvent.AfterRenderingOpaques;
