@@ -63,17 +63,13 @@ public class BlurRenderFeature : ScriptableRendererFeature
             RenderTextureDescriptor opaqueDesc = renderingData.cameraData.cameraTargetDescriptor;
 
             cmd.GetTemporaryRT(_bufferTex0.id, opaqueDesc);
-            cmd.GetTemporaryRT(_bufferTex1.id, opaqueDesc);
+            
+            Blit(cmd, src, _bufferTex0.Identifier(), _blurMat);
 
-            Blit(cmd, src, _bufferTex0.Identifier(), _blurMat, 0);
+            //Blit(cmd, _bufferTex0.Identifier(), _bufferTex1.Identifier(), _blurMat);
+            
+            Blit(cmd, _bufferTex0.Identifier(), src);
 
-             Blit(cmd, _bufferTex0.Identifier(), _bufferTex1.Identifier(), _blurMat, 1);
-            //Blit(cmd, _bufferTex1.Identifier(), _bufferTex0.Identifier(), _blurMat, 1);
-
-            //Blit(cmd, _bufferTex0.Identifier(), src, _blurMat);
-            Blit(cmd, _bufferTex1.Identifier(), src);
-
-            cmd.ReleaseTemporaryRT(_bufferTex1.id);
             cmd.ReleaseTemporaryRT(_bufferTex0.id);
 
             context.ExecuteCommandBuffer(cmd);
